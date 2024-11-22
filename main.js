@@ -14,16 +14,25 @@ let form = document.querySelector('form');
 let promptInput = document.querySelector('input[name="prompt"]');
 let output = document.querySelector('.output');
 let lightModeIcon = document.getElementById('light-mode-icon');
-let darkModeIcon = document.getElementById('dark-mode-icon');
+let darkModeIcon = document.getElementById('dark-mode-icon'); 
 
 // Add event listeners for light/dark mode toggle
-lightModeIcon.addEventListener('click', () => {
-  document.body.classList.remove('dark-theme');
-});
-
-darkModeIcon.addEventListener('click', () => {
-  document.body.classList.add('dark-theme');
-});
+const themeToggle = () => {
+  if (document.body.classList.contains('dark-theme')) {
+    document.body.classList.remove('dark-theme');
+    lightModeIcon.style.display = 'none';
+    darkModeIcon.style.display = 'block';
+  } else {
+    document.body.classList.add('dark-theme');
+    lightModeIcon.style.display = 'block';
+    darkModeIcon.style.display = 'none';
+  }
+};
+  
+// Set initial state
+themeToggle(); 
+lightModeIcon.addEventListener('click', themeToggle);
+darkModeIcon.addEventListener('click', themeToggle);
 
 
 form.onsubmit = async (ev) => {
