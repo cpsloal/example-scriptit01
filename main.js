@@ -13,19 +13,18 @@ let API_KEY = 'TODO';
 let form = document.querySelector('form');
 let promptInput = document.querySelector('input[name="prompt"]');
 let output = document.querySelector('.output');
-let themeSelect = document.querySelector('#theme-selector');
+let lightModeIcon = document.getElementById('light-mode-icon');
+let darkModeIcon = document.getElementById('dark-mode-icon');
 
-// Add event listener for theme selection
-themeSelect.addEventListener('change', () => {
-  const selectedTheme = themeSelect.value;
-  const body = document.body;
-
-  if (selectedTheme === 'dark') {
-    body.classList.add('dark-theme');
-  } else {
-    body.classList.remove('dark-theme');
-  }
+// Add event listeners for light/dark mode toggle
+lightModeIcon.addEventListener('click', () => {
+  document.body.classList.remove('dark-theme');
 });
+
+darkModeIcon.addEventListener('click', () => {
+  document.body.classList.add('dark-theme');
+});
+
 
 form.onsubmit = async (ev) => {
   ev.preventDefault();
